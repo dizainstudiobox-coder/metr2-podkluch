@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <defs>
+    <style>
+      .wall { fill: #FFFFFF; stroke: #1A1A1A; stroke-width: 5; stroke-linejoin: miter; }
+      .wall-inner { fill: #FFFFFF; stroke: #1A1A1A; stroke-width: 2.5; }
+      .partition { stroke: #1A1A1A; stroke-width: 1.5; fill: none; stroke-dasharray: 6 6; }
+      .door { fill: none; stroke: #1A1A1A; stroke-width: 1.5; }
+      .fix { fill: none; stroke: #1A1A1A; stroke-width: 1.5; }
+      .fur { fill: #F4EFEA; stroke: #1A1A1A; stroke-width: 1; }
+      .lbl { font-family: Georgia, serif; font-size: 22px; fill: #1A1A1A; }
+      .sub { font-family: Georgia, serif; font-size: 11px; fill: #C97B5A; letter-spacing: 0.5px; }
+      .corp { font-family: Helvetica, Arial, sans-serif; font-size: 10px; letter-spacing: 2px; fill: #8B847C; }
+    </style>
+  </defs>
+  <rect width="600" height="800" fill="#F4EFEA"/>
+  <!-- outer wall -->
+  <rect class="wall" x="120" y="110" width="360" height="620"/>
+  <!-- loggia at bottom -->
+  <rect class="wall-inner" x="160" y="730" width="280" height="50"/>
+  <!-- bathroom -->
+  <line class="wall-inner" x1="270" y1="110" x2="270" y2="290"/>
+  <line class="wall-inner" x1="270" y1="290" x2="120" y2="290"/>
+  <!-- entry door arc top -->
+  <path class="door" d="M 200 110 a 70 70 0 0 1 70 70"/>
+  <line class="door" x1="200" y1="110" x2="200" y2="180"/>
+  <!-- bathroom door -->
+  <path class="door" d="M 270 230 a 50 50 0 0 0 -50 50"/>
+  <line class="door" x1="270" y1="230" x2="270" y2="280"/>
+  <!-- toilet -->
+  <ellipse class="fix" cx="175" cy="185" rx="14" ry="20"/>
+  <rect class="fix" x="160" y="160" width="30" height="15"/>
+  <!-- sink/mirror -->
+  <rect class="fix" x="140" y="225" width="50" height="35" rx="3"/>
+  <line class="fix" x1="140" y1="240" x2="190" y2="240"/>
+  <!-- shower -->
+  <rect class="fix" x="215" y="160" width="45" height="110" rx="2"/>
+  <circle class="fix" cx="237" cy="180" r="6"/>
+  <!-- kitchen island -->
+  <rect class="fur" x="290" y="155" width="170" height="60"/>
+  <circle class="fix" cx="320" cy="185" r="8"/>
+  <rect class="fix" x="370" y="170" width="60" height="35" rx="2"/>
+  <!-- low platform bed (futon style) -->
+  <rect class="fur" x="280" y="370" width="180" height="120" rx="3"/>
+  <rect class="fix" x="295" y="385" width="150" height="90" rx="2"/>
+  <!-- low table -->
+  <rect class="fur" x="160" y="450" width="90" height="70" rx="3"/>
+  <!-- shoji-style partition (dashed) -->
+  <line class="partition" x1="280" y1="340" x2="460" y2="340"/>
+  <!-- window south + loggia line -->
+  <line class="fix" x1="160" y1="730" x2="440" y2="730" stroke-width="2"/>
+  <!-- labels -->
+  <text class="lbl" x="180" y="270" text-anchor="middle">4.20 м²</text>
+  <text class="sub" x="180" y="287" text-anchor="middle">САНУЗЕЛ</text>
+  <text class="lbl" x="365" y="245" text-anchor="middle">2.85 м²</text>
+  <text class="sub" x="365" y="262" text-anchor="middle">ПРИХОЖАЯ</text>
+  <text class="lbl" x="370" y="320" text-anchor="middle">8.20 м²</text>
+  <text class="sub" x="370" y="335" text-anchor="middle">КУХНЯ</text>
+  <text class="lbl" x="300" y="570" text-anchor="middle">9.75 м²</text>
+  <text class="sub" x="300" y="585" text-anchor="middle">ГОСТИНАЯ-СПАЛЬНЯ</text>
+  <text class="corp" x="300" y="760" text-anchor="middle" fill="#8B847C">ЛОДЖИЯ</text>
+  <text class="corp" x="300" y="785" text-anchor="middle">КОРПУС 1.2 · СТУДИЯ 25.0 м² · «Метр² Под Ключ»</text>
+</svg>

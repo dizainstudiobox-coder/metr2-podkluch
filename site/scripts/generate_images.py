@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
-"""Генератор визуализаций для каталога МЕТР² ПОД КЛЮЧ.
+"""Генератор визуализаций для карусели МЕТР² ПОД КЛЮЧ.
 
-Поддерживает два провайдера:
-  * Прямой OpenAI (OPENAI_API_KEY) — api.openai.com
-  * ProxyAPI (PROXYAPI_KEY)        — api.proxyapi.ru/openai/v1  (используется в Дзен-проекте)
-
-Авто-поиск ключа в env, .env-файлах /opt/projects/*/, /opt/projects/*/code/, systemd units.
+Поддерживает массив visualizations внутри проекта (новая структура).
+Использует PROXYAPI_KEY или OPENAI_API_KEY.
 """
 import base64
 import json
@@ -15,61 +12,50 @@ import sys
 from glob import glob
 from pathlib import Path
 
-# Имя переменной → base_url
 KEY_PROVIDERS = [
     ("PROXYAPI_KEY", "https://api.proxyapi.ru/openai/v1"),
-    ("OPENAI_API_KEY", None),  # None = default api.openai.com
+    ("OPENAI_API_KEY", None),
 ]
 
 
-def _extract_kv_from_text(text: str, var_name: str) -> str | None:
+def _extract(text, var):
     m = re.search(
-        rf'^\s*(?:export\s+)?{re.escape(var_name)}\s*=\s*["\']?([A-Za-z0-9_\-\.]+)["\']?',
+        rf'^\s*(?:export\s+)?{re.escape(var)}\s*=\s*["\']?([A-Za-z0-9_\-\.]+)["\']?',
         text, re.MULTILINE,
     )
     return m.group(1) if m else None
 
 
 def find_api_key():
-    """Возвращает (key, base_url, source). base_url=None → дефолтный OpenAI."""
-    # 1. ENV
     for var, base in KEY_PROVIDERS:
         if k := os.getenv(var):
             return k, base, f"env:{var}"
-
-    # 2. .env-файлы во всех проектах
-    candidates = []
-    candidates.extend(glob("/opt/projects/*/.env"))
-    candidates.extend(glob("/opt/projects/*/code/.env"))
-    candidates.extend(glob("/opt/projects/*/*/.env"))
-    candidates.extend(glob("/root/.env"))
-    for path in candidates:
+    paths = (glob("/opt/projects/*/.env") + glob("/opt/projects/*/code/.env")
+             + glob("/opt/projects/*/*/.env") + glob("/root/.env"))
+    for p in paths:
         try:
-            text = Path(path).read_text(errors="ignore")
+            text = Path(p).read_text(errors="ignore")
         except Exception:
             continue
         for var, base in KEY_PROVIDERS:
-            if key := _extract_kv_from_text(text, var):
-                return key, base, f"{path}:{var}"
-
-    # 3. systemd unit-файлы
+            if k := _extract(text, var):
+                return k, base, f"{p}:{var}"
     for unit in glob("/etc/systemd/system/*.service"):
         try:
             text = Path(unit).read_text(errors="ignore")
         except Exception:
             continue
         for var, base in KEY_PROVIDERS:
-            if key := _extract_kv_from_text(text, var):
-                return key, base, f"{unit}:{var}"
+            if k := _extract(text, var):
+                return k, base, f"{unit}:{var}"
         for m in re.finditer(r"EnvironmentFile=-?(\S+)", text):
             try:
                 ef_text = Path(m.group(1)).read_text(errors="ignore")
             except Exception:
                 continue
             for var, base in KEY_PROVIDERS:
-                if key := _extract_kv_from_text(ef_text, var):
-                    return key, base, f"{m.group(1)}:{var}"
-
+                if k := _extract(ef_text, var):
+                    return k, base, f"{m.group(1)}:{var}"
     return None, None, None
 
 
@@ -87,41 +73,41 @@ def main():
 
     api_key, base_url, source = find_api_key()
     if not api_key:
-        print("ERROR: API key not found. Searched: env, /opt/projects/**/.env, systemd units.", file=sys.stderr)
-        print(f"Looked for vars: {[v for v, _ in KEY_PROVIDERS]}", file=sys.stderr)
+        print("ERROR: API key not found.", file=sys.stderr)
         sys.exit(1)
-    print(f"Found API key in: {source}")
-    if base_url:
-        print(f"Using base URL: {base_url}")
-    else:
-        print("Using default OpenAI base URL")
+    print(f"API key from: {source}")
+    print(f"Base URL: {base_url or 'default OpenAI'}")
 
     client = OpenAI(api_key=api_key, base_url=base_url)
     projects = json.loads(projects_json.read_text(encoding="utf-8"))
     print(f"Loaded {len(projects)} projects")
-    print(f"Output: {images_dir}")
 
+    total_imgs = 0
     for p in projects:
-        out = images_dir / p["image"]
-        if out.exists() and out.stat().st_size > 10000:
-            print(f"  SKIP {p['id']} (exists, {out.stat().st_size//1024} KB)")
+        if "images" not in p:
             continue
-        prompt = p.get("prompt") or f"Modern {p['style']} interior, photorealistic premium quality"
-        print(f"  GEN  {p['id']}")
-        try:
-            resp = client.images.generate(
-                model="gpt-image-1",
-                prompt=prompt,
-                size="1536x1024",
-                quality="medium",
-                n=1,
-            )
-            out.write_bytes(base64.b64decode(resp.data[0].b64_json))
-            print(f"        saved {out.name} ({out.stat().st_size//1024} KB)")
-        except Exception as e:
-            print(f"        FAIL: {e}", file=sys.stderr)
+        for img in p["images"]:
+            total_imgs += 1
+            out = images_dir / img["file"]
+            if out.exists() and out.stat().st_size > 10000:
+                print(f"  SKIP {img['file']} (exists)")
+                continue
+            prompt = img["prompt"]
+            print(f"  GEN  {img['file']}")
+            try:
+                resp = client.images.generate(
+                    model="gpt-image-1",
+                    prompt=prompt,
+                    size="1536x1024",
+                    quality="medium",
+                    n=1,
+                )
+                out.write_bytes(base64.b64decode(resp.data[0].b64_json))
+                print(f"        saved ({out.stat().st_size//1024} KB)")
+            except Exception as e:
+                print(f"        FAIL: {e}", file=sys.stderr)
 
-    print(f"\nDone. Images at {images_dir}")
+    print(f"\nDone. Generated/skipped {total_imgs} images in {images_dir}")
 
 
 if __name__ == "__main__":

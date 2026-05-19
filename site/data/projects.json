@@ -3,60 +3,132 @@
     "id": "studio_20_scandi",
     "title": "Студия 20 м²",
     "subtitle": "Скандинавский минимализм",
+    "article": "131815",
     "area_m2": 20,
     "rooms": "Студия",
     "rooms_short": "Студия",
     "style": "Скандинавский минимализм",
     "corpus": "Корпус 1.3",
     "price": 20000,
-    "description": "Самый компактный формат в каталоге. Светлая палитра, скрытое хранение, кровать-трансформер у окна. Зона приготовления и обеденная стойка единым блоком. Проект для одного жильца с расчётом на максимум воздуха в 20 квадратах.",
-    "ready": false,
-    "image": "studio_20_scandi.jpg",
-    "prompt": "Minimalist Scandinavian studio apartment interior, 20 sqm, white walls, light pine wood floors, low platform bed with linen bedding visible in background near a large window, compact kitchen area on right with white cabinets, soft natural daylight from window, plants on windowsill, photorealistic premium interior design photography, architectural digest style, neutral and warm, eye-level camera, sharp focus"
+    "budget_furnish": 720000,
+    "description": "Самый компактный формат. Светлая палитра, скрытые системы хранения, кровать-трансформер у окна. Зона приготовления и обеденная стойка единым блоком вдоль одной стены. Проект для одного жильца — максимум воздуха в 20 квадратах.",
+    "plan_image": "plans/studio_20_scandi.svg",
+    "images": [
+      {
+        "file": "studio_20_scandi_living.jpg",
+        "title": "Гостиная-спальня",
+        "prompt": "Photorealistic interior photography of a Scandinavian style studio apartment, 20 sqm, single architectural eye-level shot of the living-bedroom area only (NOT kitchen). White walls, cool pale ash wood floor, low-platform bed against far wall under a large vertical window, white linen bedding, simple wooden nightstand, small wool rug, a chair near window with throw blanket. Cool daylight from window. Minimal, airy, light grey and white palette, NO yellow, NO beige, NO bed near sink or kitchen. Architectural digest style photography. Sharp focus, slight depth of field."
+      },
+      {
+        "file": "studio_20_scandi_kitchen.jpg",
+        "title": "Кухня",
+        "prompt": "Photorealistic interior photography of a compact Scandinavian kitchen zone in a studio apartment, single straight kitchen line along one wall. White matte cabinet fronts, brushed steel handles, pale grey laminate countertop, integrated black induction cooktop, white tile backsplash, single basin sink. Open shelf above with ceramic mugs. Cool natural daylight. No furniture other than kitchen. Wide-angle shot facing kitchen wall. Cool grey-white palette, NO yellow, NO warm beige tones."
+      },
+      {
+        "file": "studio_20_scandi_overall.jpg",
+        "title": "Общий вид",
+        "prompt": "Photorealistic wide-angle architectural photo of a small Scandinavian studio apartment 20 sqm, viewed diagonally from the entry door corner. Visible: small kitchen on left wall, sleeping area on right far wall with low bed, large window at far end with sheer linen curtains. Walls white, floor pale ash wood, ceiling white. Minimal furniture. Cool daylight. Quiet, airy, magazine-quality. Pure white and cool grey palette, single accent of pale terracotta cushion."
+      }
+    ],
+    "ready": false
   },
   {
     "id": "studio_25_japandi",
     "title": "Студия 25 м²",
     "subtitle": "Japandi",
+    "article": "131825",
     "area_m2": 25,
     "rooms": "Студия",
     "rooms_short": "Студия",
     "style": "Japandi",
     "corpus": "Корпус 1.2",
     "price": 20000,
-    "description": "Сочетание японского минимализма и скандинавского тепла. Низкая мебель, натуральное дерево, бумажные светильники, спокойные земляные оттенки. Зона сна отделена раздвижной перегородкой в духе сёдзи. Подходит для тех, кто работает дома и ценит тишину.",
-    "ready": false,
-    "image": "studio_25_japandi.jpg",
-    "prompt": "Japandi style studio apartment interior, 25 sqm, low natural oak wood furniture, beige and warm earth tones, paper lantern pendant lamp, indoor plants in ceramic pots, tatami-style sleeping area with low platform bed behind sliding shoji-style partition, minimal galley kitchen with black accents, calm serene atmosphere, photorealistic premium interior, soft diffused daylight, architectural digest, sharp focus"
+    "budget_furnish": 780000,
+    "description": "Сочетание японского минимализма и скандинавского тепла. Низкая мебель, натуральный орех, бумажные светильники, спокойные земляные оттенки. Зона сна — за раздвижной перегородкой в духе сёдзи. Для тех, кто работает дома и ценит тишину.",
+    "plan_image": "plans/studio_25_japandi.svg",
+    "images": [
+      {
+        "file": "studio_25_japandi_living.jpg",
+        "title": "Зона отдыха",
+        "prompt": "Photorealistic interior photography of a Japandi style studio apartment living area, 25 sqm. Low natural walnut wood floor, beige plastered walls, low-platform futon-style bed on right with simple linen bedding, low coffee table center, single bonsai plant on a wooden stool, rice-paper pendant lamp hanging center, sliding shoji-style room partition visible in background. Warm beige and walnut palette, indirect natural light. Photorealistic premium interior photography, eye-level shot."
+      },
+      {
+        "file": "studio_25_japandi_kitchen.jpg",
+        "title": "Кухня-обеденная",
+        "prompt": "Photorealistic interior of a Japandi kitchen area in a studio apartment. Natural walnut wood lower cabinets with no upper cabinets, beige stone countertop, black matte fixtures, single basin sink, small induction cooktop, narrow open shelf with ceramic bowls. Wooden dining stool. Warm beige and walnut tones, paper pendant lamp above. NO bed visible, NO sleeping area in shot. Soft natural light, photorealistic premium quality, eye-level camera."
+      },
+      {
+        "file": "studio_25_japandi_partition.jpg",
+        "title": "Перегородка-сёдзи",
+        "prompt": "Photorealistic close-up of a sliding shoji-style wooden lattice partition in a Japandi studio apartment, half-open showing glimpse of low bed behind. Natural light filtered through paper panels. Walnut wood frame, rice paper. Warm beige walls. Indoor plant in ceramic pot foreground. Architectural digest style photography, sharp focus, magazine quality."
+      }
+    ],
+    "ready": false
   },
   {
     "id": "studio_28_loft",
     "title": "Студия 28 м²",
     "subtitle": "Soft Loft",
+    "article": "131828",
     "area_m2": 28,
     "rooms": "Студия",
     "rooms_short": "Студия",
     "style": "Soft Loft",
     "corpus": "Корпус 1.2",
     "price": 20000,
-    "description": "Мягкая интерпретация лофта без бетонной грубости. Один кирпичный акцент-стена, тёплая палитра, металл и дерево. Спальное место отделено стеллажом-перегородкой, кухня с барной стойкой. Для уверенного жильца, который любит характер и фактуру.",
-    "ready": false,
-    "image": "studio_28_loft.jpg",
-    "prompt": "Soft loft studio apartment interior, 28 sqm, one exposed warm red brick accent wall, warm wide-plank oak wood floor, industrial-style matte black metal floor lamp, cozy linen sofa, open shelving room divider with books and decor, compact kitchen with white marble countertop and brass fittings, warm ambient evening lighting, photorealistic premium interior, magazine-quality photography, sharp focus"
+    "budget_furnish": 820000,
+    "description": "Мягкий лофт без бетонной грубости. Один кирпичный акцент-стена, тёплая палитра дерева, чёрный металл, латунь. Спальное место отделено стеллажом-перегородкой, кухня с барной стойкой. Для жильца, который любит характер и фактуру.",
+    "plan_image": "plans/studio_28_loft.svg",
+    "images": [
+      {
+        "file": "studio_28_loft_living.jpg",
+        "title": "Гостиная",
+        "prompt": "Photorealistic interior photography of a Soft Loft style studio living room. Exposed warm red brick accent wall on left, dark grey plastered walls elsewhere, wide-plank dark oak wood floor. Comfortable grey-blue linen sofa with throw blanket, black metal industrial floor lamp, wooden coffee table with books, small leather armchair. Black-framed window with city view. Cool grey + warm wood + brick palette, NOT beige overall. Sharp focus, evening warm lamp light mixed with daylight."
+      },
+      {
+        "file": "studio_28_loft_kitchen.jpg",
+        "title": "Кухня с баром",
+        "prompt": "Photorealistic interior of a Soft Loft studio kitchen with bar counter. Dark grey matte cabinets, black metal handles, white marble countertop, brass tap, single basin sink, black induction cooktop, bar counter extending into the room with two black metal bar stools with wooden seats. Pendant industrial brass lamps above bar. Wide-plank wood floor. Dark grey + marble + brass palette. NO bed in shot, NO sleeping area. Architectural photography, sharp focus."
+      },
+      {
+        "file": "studio_28_loft_bedroom.jpg",
+        "title": "Спальная зона",
+        "prompt": "Photorealistic interior of a soft loft studio bedroom zone, separated by an open black-metal shelving room divider with books and decor visible. Behind the shelf: queen bed with dark grey linen, two leather-look pillows. Wide-plank dark oak floor. Exposed brick partial wall on far side. One pendant warm lamp above bed. Cool grey + dark wood + brick palette. Eye-level photography, magazine quality, sharp focus. NO kitchen visible, NO sink in shot."
+      }
+    ],
+    "ready": false
   },
   {
     "id": "studio_30_classic",
     "title": "Студия 30 м²",
     "subtitle": "Современная классика",
+    "article": "131830",
     "area_m2": 30,
     "rooms": "Студия",
     "rooms_short": "Студия",
     "style": "Современная классика",
     "corpus": "Корпус 1.1",
     "price": 20000,
-    "description": "Сдержанная классика в нейтральной палитре крем + бежевый. Паркет ёлочкой, латунные детали, мягкое кресло у окна. Кухня замаскирована под мебельную композицию. Премиум-формат для одного жильца, который покупает квартиру под аренду или для себя.",
-    "ready": false,
-    "image": "studio_30_classic.jpg",
-    "prompt": "Modern classic studio apartment interior, 30 sqm, neutral palette of cream beige and ivory, herringbone parquet wood floor, subtle brass and bronze accents, sophisticated layered lighting with table lamps, comfortable cream upholstered armchair near window, premium concealed kitchen integrated as furniture cabinetry, refined moldings, photorealistic luxury interior, soft daylight, architectural digest style, sharp focus"
+    "budget_furnish": 950000,
+    "description": "Сдержанная классика, нейтральная палитра крем + бежевый. Паркет ёлочкой, латунные детали, мягкое кресло у окна. Кухня замаскирована под мебельную композицию. Премиум-формат для одного жильца или под аренду.",
+    "plan_image": "plans/studio_30_classic.svg",
+    "images": [
+      {
+        "file": "studio_30_classic_living.jpg",
+        "title": "Гостиная-спальня",
+        "prompt": "Photorealistic interior of a modern classic style studio apartment 30 sqm, sleeping-living zone. Cream and ivory palette, herringbone parquet wood floor, classical wall mouldings, brass picture rail. Queen bed with cream linen and silk throw, two upholstered cream nightstands, brass table lamps. Soft sheer curtains at large window. Upholstered cream armchair near window with side table. Refined, magazine-quality, soft natural daylight. Cream + brass + ivory palette, NO yellow tones overall."
+      },
+      {
+        "file": "studio_30_classic_kitchen.jpg",
+        "title": "Кухня-столовая",
+        "prompt": "Photorealistic interior of a modern classic kitchen-dining area in a studio apartment. Cream cabinetry with classical raised panels and brass cup handles, white marble countertop with subtle veining, brass tap, integrated appliances disguised behind panels. Marble-top dining table with two upholstered cream chairs. Brass pendant lamp above table. Herringbone wood floor. Soft daylight. Refined, sophisticated. NO bed visible, NO sleeping area. Architectural digest quality."
+      },
+      {
+        "file": "studio_30_classic_bay.jpg",
+        "title": "Эркер",
+        "prompt": "Photorealistic interior close-up of a bay-window seating area in a modern classic studio apartment. Cream upholstered armchair, small marble side table with stack of books and brass table lamp, sheer linen curtains, herringbone parquet floor. Soft natural daylight streaming in. Refined, restful, ivory-cream palette. Magazine-quality interior photography, eye-level shot, sharp focus."
+      }
+    ],
+    "ready": false
   }
 ]
