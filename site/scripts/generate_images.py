@@ -1,33 +1,61 @@
 #!/usr/bin/env python3
 """Генератор визуализаций для каталога МЕТР² ПОД КЛЮЧ через OpenAI gpt-image-1.
 
-Автоматически находит OPENAI_API_KEY в:
-  1. $OPENAI_API_KEY (env)
-  2. /opt/projects/blog_dzen/.env  (от Дзен-проекта)
-  3. /etc/systemd/system/blog-dzen-draft.service (Environment=)
+Авто-поиск OPENAI_API_KEY в:
+  1. $OPENAI_API_KEY env
+  2. .env-файлах любых проектов под /opt/projects/  (включая /code/.env)
+  3. /etc/systemd/system/*.service (Environment= и EnvironmentFile=)
 """
 import base64
 import json
 import os
 import re
 import sys
+from glob import glob
 from pathlib import Path
 
 
+def _extract_key_from_text(text: str) -> str | None:
+    # OPENAI_API_KEY=xxx, OPENAI_API_KEY = "xxx", export OPENAI_API_KEY=xxx
+    m = re.search(r'OPENAI_API_KEY\s*=\s*["\']?([A-Za-z0-9_\-]+)["\']?', text)
+    return m.group(1) if m else None
+
+
 def find_api_key():
+    # 1. ENV
     if k := os.getenv("OPENAI_API_KEY"):
-        return k
-    env_file = Path("/opt/projects/blog_dzen/.env")
-    if env_file.exists():
-        for line in env_file.read_text().splitlines():
-            if line.startswith("OPENAI_API_KEY"):
-                return line.split("=", 1)[1].strip().strip("'\"")
-    unit = Path("/etc/systemd/system/blog-dzen-draft.service")
-    if unit.exists():
-        m = re.search(r'Environment=.*OPENAI_API_KEY=([^\s"\']+)', unit.read_text())
-        if m:
-            return m.group(1)
-    return None
+        return k, "env"
+    # 2. .env-файлы во всех проектах
+    candidates = []
+    candidates.extend(glob("/opt/projects/*/.env"))
+    candidates.extend(glob("/opt/projects/*/code/.env"))
+    candidates.extend(glob("/opt/projects/*/*/.env"))
+    candidates.extend(glob("/root/.env"))
+    for path in candidates:
+        try:
+            text = Path(path).read_text(errors="ignore")
+            if key := _extract_key_from_text(text):
+                return key, path
+        except Exception:
+            continue
+    # 3. systemd unit-файлы
+    for unit in glob("/etc/systemd/system/*.service"):
+        try:
+            text = Path(unit).read_text(errors="ignore")
+        except Exception:
+            continue
+        # Environment="OPENAI_API_KEY=..."
+        if key := _extract_key_from_text(text):
+            return key, unit
+        # EnvironmentFile=/path/to/file — рекурсивно
+        for m in re.finditer(r"EnvironmentFile=-?(\S+)", text):
+            ef = m.group(1)
+            try:
+                if key := _extract_key_from_text(Path(ef).read_text(errors="ignore")):
+                    return key, ef
+            except Exception:
+                continue
+    return None, None
 
 
 def main():
@@ -42,24 +70,28 @@ def main():
     images_dir = root / "assets" / "projects"
     images_dir.mkdir(parents=True, exist_ok=True)
 
-    api_key = find_api_key()
+    api_key, source = find_api_key()
     if not api_key:
-        print("ERROR: OPENAI_API_KEY not found (checked env, blog_dzen/.env, systemd unit)", file=sys.stderr)
+        print("ERROR: OPENAI_API_KEY not found. Searched:", file=sys.stderr)
+        print("  - $OPENAI_API_KEY env", file=sys.stderr)
+        print("  - /opt/projects/*/.env", file=sys.stderr)
+        print("  - /opt/projects/*/code/.env", file=sys.stderr)
+        print("  - /etc/systemd/system/*.service (Environment= and EnvironmentFile=)", file=sys.stderr)
         sys.exit(1)
+    print(f"Found OPENAI_API_KEY in: {source}")
 
     client = OpenAI(api_key=api_key)
     projects = json.loads(projects_json.read_text(encoding="utf-8"))
-    print(f"Loaded {len(projects)} projects from {projects_json}")
+    print(f"Loaded {len(projects)} projects")
     print(f"Output: {images_dir}")
 
     for p in projects:
         out = images_dir / p["image"]
         if out.exists() and out.stat().st_size > 10000:
-            print(f"  SKIP {p['id']} (exists)")
+            print(f"  SKIP {p['id']} (exists, {out.stat().st_size//1024} KB)")
             continue
         prompt = p.get("prompt") or f"Modern {p['style']} interior, photorealistic premium quality"
         print(f"  GEN  {p['id']}")
-        print(f"        prompt: {prompt[:100]}...")
         try:
             resp = client.images.generate(
                 model="gpt-image-1",
