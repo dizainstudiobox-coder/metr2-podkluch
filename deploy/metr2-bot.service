@@ -1,0 +1,18 @@
+[Unit]
+Description=METR2 PODKLUCH — Telegram bot (aiogram)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/projects/metr2-podkluch
+EnvironmentFile=/opt/projects/metr2-podkluch/.env
+ExecStart=/opt/projects/metr2-podkluch/.venv/bin/python -B bot.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
