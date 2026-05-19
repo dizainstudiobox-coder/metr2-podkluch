@@ -1,4 +1,4 @@
-// Каталог: грузим из data/projects.json и рендерим карточки
+// Главная: каталог
 (async function renderCatalog() {
   const grid = document.getElementById('catalog-grid');
   if (!grid) return;
@@ -7,8 +7,7 @@
     const projects = await res.json();
     grid.innerHTML = projects.map(p => `
       <a href="project.html?id=${p.id}" class="project-card">
-        <div class="project-img">
-          <span class="project-img-placeholder">${p.rooms_short}</span>
+        <div class="project-img" style="background-image: url('assets/projects/${p.image}');">
           <span class="status ${p.ready ? 'ready' : ''}">${p.ready ? 'Готов' : 'В разработке'}</span>
         </div>
         <div class="project-card-body">
@@ -35,7 +34,7 @@
   }
 })();
 
-// Project page: грузим один проект по ?id=
+// Страница проекта
 (async function renderProject() {
   const root = document.getElementById('project-root');
   if (!root) return;
@@ -46,7 +45,7 @@
     const res = await fetch('data/projects.json');
     const projects = await res.json();
     const p = projects.find(x => x.id === id);
-    if (!p) { root.innerHTML = '<div class="container" style="padding:96px 0;"><h1>Проект не найден</h1><p><a href="index.html#catalog">← вернуться в каталог</a></p></div>'; return; }
+    if (!p) { root.innerHTML = '<div class="container" style="padding:96px 0;"><h1>Проект не найден</h1><p><a href="index.html#catalog">← в каталог</a></p></div>'; return; }
     document.title = `${p.title} — ${p.subtitle} · МЕТР² ПОД КЛЮЧ`;
     root.innerHTML = `
       <div class="container project-hero">
@@ -55,9 +54,7 @@
         </div>
         <div class="project-detail-grid">
           <div>
-            <div class="project-detail-img">
-              <span class="placeholder">${p.rooms_short}</span>
-            </div>
+            <div class="project-detail-img" style="background-image: url('assets/projects/${p.image}');"></div>
           </div>
           <div class="project-detail">
             <h1>${p.title}</h1>
@@ -78,8 +75,7 @@
               </a>
             </div>
             <p style="font-size:13px;color:var(--text-muted);">
-              По нажатию — вы попадаете в Telegram-бот, где оставляете заявку.
-              Лично свяжусь с вами в течение дня.
+              По нажатию — попадёте в Telegram-бот, оставите заявку. Лично свяжусь с вами в течение дня.
             </p>
           </div>
         </div>
