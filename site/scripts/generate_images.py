@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Генератор визуализаций для каталога МЕТР² ПОД КЛЮЧ через OpenAI gpt-image-1.
+"""Генератор визуализаций для каталога МЕТР² ПОД КЛЮЧ.
 
-Авто-поиск OPENAI_API_KEY в:
-  1. $OPENAI_API_KEY env
-  2. .env-файлах любых проектов под /opt/projects/  (включая /code/.env)
-  3. /etc/systemd/system/*.service (Environment= и EnvironmentFile=)
+Поддерживает два провайдера:
+  * Прямой OpenAI (OPENAI_API_KEY) — api.openai.com
+  * ProxyAPI (PROXYAPI_KEY)        — api.proxyapi.ru/openai/v1  (используется в Дзен-проекте)
+
+Авто-поиск ключа в env, .env-файлах /opt/projects/*/, /opt/projects/*/code/, systemd units.
 """
 import base64
 import json
@@ -14,17 +15,28 @@ import sys
 from glob import glob
 from pathlib import Path
 
+# Имя переменной → base_url
+KEY_PROVIDERS = [
+    ("PROXYAPI_KEY", "https://api.proxyapi.ru/openai/v1"),
+    ("OPENAI_API_KEY", None),  # None = default api.openai.com
+]
 
-def _extract_key_from_text(text: str) -> str | None:
-    # OPENAI_API_KEY=xxx, OPENAI_API_KEY = "xxx", export OPENAI_API_KEY=xxx
-    m = re.search(r'OPENAI_API_KEY\s*=\s*["\']?([A-Za-z0-9_\-]+)["\']?', text)
+
+def _extract_kv_from_text(text: str, var_name: str) -> str | None:
+    m = re.search(
+        rf'^\s*(?:export\s+)?{re.escape(var_name)}\s*=\s*["\']?([A-Za-z0-9_\-\.]+)["\']?',
+        text, re.MULTILINE,
+    )
     return m.group(1) if m else None
 
 
 def find_api_key():
+    """Возвращает (key, base_url, source). base_url=None → дефолтный OpenAI."""
     # 1. ENV
-    if k := os.getenv("OPENAI_API_KEY"):
-        return k, "env"
+    for var, base in KEY_PROVIDERS:
+        if k := os.getenv(var):
+            return k, base, f"env:{var}"
+
     # 2. .env-файлы во всех проектах
     candidates = []
     candidates.extend(glob("/opt/projects/*/.env"))
@@ -34,28 +46,31 @@ def find_api_key():
     for path in candidates:
         try:
             text = Path(path).read_text(errors="ignore")
-            if key := _extract_key_from_text(text):
-                return key, path
         except Exception:
             continue
+        for var, base in KEY_PROVIDERS:
+            if key := _extract_kv_from_text(text, var):
+                return key, base, f"{path}:{var}"
+
     # 3. systemd unit-файлы
     for unit in glob("/etc/systemd/system/*.service"):
         try:
             text = Path(unit).read_text(errors="ignore")
         except Exception:
             continue
-        # Environment="OPENAI_API_KEY=..."
-        if key := _extract_key_from_text(text):
-            return key, unit
-        # EnvironmentFile=/path/to/file — рекурсивно
+        for var, base in KEY_PROVIDERS:
+            if key := _extract_kv_from_text(text, var):
+                return key, base, f"{unit}:{var}"
         for m in re.finditer(r"EnvironmentFile=-?(\S+)", text):
-            ef = m.group(1)
             try:
-                if key := _extract_key_from_text(Path(ef).read_text(errors="ignore")):
-                    return key, ef
+                ef_text = Path(m.group(1)).read_text(errors="ignore")
             except Exception:
                 continue
-    return None, None
+            for var, base in KEY_PROVIDERS:
+                if key := _extract_kv_from_text(ef_text, var):
+                    return key, base, f"{m.group(1)}:{var}"
+
+    return None, None, None
 
 
 def main():
@@ -70,17 +85,18 @@ def main():
     images_dir = root / "assets" / "projects"
     images_dir.mkdir(parents=True, exist_ok=True)
 
-    api_key, source = find_api_key()
+    api_key, base_url, source = find_api_key()
     if not api_key:
-        print("ERROR: OPENAI_API_KEY not found. Searched:", file=sys.stderr)
-        print("  - $OPENAI_API_KEY env", file=sys.stderr)
-        print("  - /opt/projects/*/.env", file=sys.stderr)
-        print("  - /opt/projects/*/code/.env", file=sys.stderr)
-        print("  - /etc/systemd/system/*.service (Environment= and EnvironmentFile=)", file=sys.stderr)
+        print("ERROR: API key not found. Searched: env, /opt/projects/**/.env, systemd units.", file=sys.stderr)
+        print(f"Looked for vars: {[v for v, _ in KEY_PROVIDERS]}", file=sys.stderr)
         sys.exit(1)
-    print(f"Found OPENAI_API_KEY in: {source}")
+    print(f"Found API key in: {source}")
+    if base_url:
+        print(f"Using base URL: {base_url}")
+    else:
+        print("Using default OpenAI base URL")
 
-    client = OpenAI(api_key=api_key)
+    client = OpenAI(api_key=api_key, base_url=base_url)
     projects = json.loads(projects_json.read_text(encoding="utf-8"))
     print(f"Loaded {len(projects)} projects")
     print(f"Output: {images_dir}")
