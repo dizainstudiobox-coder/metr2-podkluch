@@ -8,7 +8,7 @@
     grid.innerHTML = projects.map(p => `
       <a href="project.html?id=${p.id}" class="project-card">
         <div class="project-card-plan">
-          <img src="assets/projects/${p.plan_image}" alt="План ${p.title}" loading="lazy">
+          <img src="${p.plan_image.startsWith('http') ? p.plan_image : 'assets/projects/' + p.plan_image}" alt="План ${p.title}" loading="lazy">
           <span class="status ${p.ready ? 'ready' : ''}">${p.ready ? 'Готов' : 'В разработке'}</span>
         </div>
         <div class="project-card-body">
@@ -55,7 +55,7 @@
     document.title = `${p.title} — ${p.subtitle} · МЕТР² ПОД КЛЮЧ`;
     // Список слайдов: первым план, дальше визуализации
     const slides = [
-      { src: `assets/projects/${p.plan_image}`, title: 'Планировка', is_plan: true },
+      { src: (p.plan_image.startsWith('http') ? p.plan_image : `assets/projects/${p.plan_image}`), title: 'Планировка', is_plan: true },
       ...p.images.map(img => ({ src: `assets/projects/${img.file}`, title: img.title, is_plan: false })),
     ];
     root.innerHTML = `
