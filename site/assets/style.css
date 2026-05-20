@@ -213,8 +213,14 @@ a:hover { color: var(--accent); }
 /* Catalog */
 .catalog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+@media (max-width: 1100px) {
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .catalog-grid { grid-template-columns: 1fr; }
 }
 .project-card {
   background: var(--bg-card);
@@ -773,3 +779,12 @@ a:hover { color: var(--accent); }
   .carousel-main { height: 360px; }
 }
 /* ==CAROUSEL-FIX-V2-END== */
+
+/* ==CATALOG-4COL-V3-START== */
+.project-card h3 { font-size: 22px; }
+.project-card .subtitle { font-size: 14px; }
+.project-card .price { font-size: 20px; }
+.project-card-body { padding: 18px; }
+.project-card-plan { padding: 6px; }
+.project-meta { font-size: 11px; flex-wrap: wrap; }
+/* ==CATALOG-4COL-V3-END== */
