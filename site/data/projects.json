@@ -2,32 +2,37 @@
   {
     "id": "studio_20_scandi",
     "title": "Студия 18.5 м²",
-    "subtitle": "Скандинавский минимализм",
+    "subtitle": "Скандинавский",
     "article": "131818",
     "area_m2": 18.5,
     "rooms": "Студия",
     "rooms_short": "Студия",
-    "style": "Скандинавский минимализм",
+    "style": "Скандинавский",
+    "palette_tags": [
+      "белые стены",
+      "светлое дерево",
+      "лён"
+    ],
     "corpus": "Корпус 1.3",
     "price": 20000,
     "budget_furnish": 700000,
-    "description": "Самый компактный формат из доступных в Первом Нагатинском. Светлая палитра, скрытые системы хранения, кровать-трансформер у окна.",
+    "description": "Светлый, в дереве, с текстилем. Для тех, у кого вечером должно быть ощущение «как у бабушки в воскресенье».",
     "plan_image": "https://pb17794.profitbase.ru/uploads/preset/17794/69985a61b686e.jpg",
     "images": [
       {
         "file": "studio_20_scandi_v3_hallway.jpg",
         "title": "Прихожая",
-        "prompt": "Photorealistic interior of a small Scandinavian-style entryway in a studio apartment, only about 2.5 square meters. Wall-mounted white matte coat rack with two coats hanging, simple natural ash wood bench with white cushion below, two pairs of shoes underneath, large round mirror on the wall above bench with brushed steel rim. Pale ash hardwood floor, white matte walls. Single ceramic vase with pampas grass beside the bench. Cool natural daylight from a doorway. Architectural digest photography, eye-level, sharp focus. White, pale grey, light wood palette. NO yellow tint, NO warm beige."
+        "prompt": ""
       },
       {
         "file": "studio_20_scandi_v3_bathroom.jpg",
         "title": "Санузел",
-        "prompt": "Photorealistic interior of a small modern bathroom in a Scandinavian-style studio, only 3 square meters. White subway tile on walls, light grey large-format floor tiles, walk-in shower with frameless clear glass divider, wall-mounted white ceramic sink with brushed steel single-lever tap, mirror with integrated LED light strip, white wall-mounted toilet, single floating wooden shelf with three rolled white towels. Cool LED lighting. Sharp focus, magazine quality. White and cool grey palette."
+        "prompt": ""
       },
       {
         "file": "studio_20_scandi_v3_living.jpg",
         "title": "Жилая комната",
-        "prompt": "Photorealistic interior of an 18-square-meter Scandinavian studio combined living-kitchen-bedroom area. Single-line kitchen along the left wall: white matte cabinets, integrated induction cooktop, single basin sink, pale grey laminate countertop, white subway tile backsplash, open shelf with two ceramic mugs. Low platform bed against the opposite wall with crisp white linen bedding. Small round wooden coffee table in the center with a single ceramic vase. Single bouclé armchair near a large vertical window with sheer linen curtains. Pale ash hardwood floor, matte white walls. Cool natural daylight from window. Airy and minimal, white and pale grey palette with one small pale-terracotta cushion accent. NO yellow tint, NO heavy warm beige."
+        "prompt": ""
       }
     ],
     "ready": false
@@ -35,32 +40,37 @@
   {
     "id": "studio_25_japandi",
     "title": "Студия 20 м²",
-    "subtitle": "Japandi",
+    "subtitle": "Японди",
     "article": "131820",
     "area_m2": 20,
     "rooms": "Студия",
     "rooms_short": "Студия",
-    "style": "Japandi",
+    "style": "Японди",
+    "palette_tags": [
+      "натуральные тона",
+      "растения",
+      "дерево"
+    ],
     "corpus": "Корпус 1.3",
     "price": 20000,
     "budget_furnish": 740000,
-    "description": "Сочетание японского минимализма и скандинавского тепла. Низкая мебель, натуральный орех, бумажные светильники, перегородка в духе сёдзи.",
+    "description": "Минимум вещей, мягкий свет, натуральные тона. Подходит интровертам и тем, кто работает из дома.",
     "plan_image": "https://pb17794.profitbase.ru/uploads/preset/17794/69985ae74ffab.jpg",
     "images": [
       {
         "file": "studio_25_japandi_v3_hallway.jpg",
         "title": "Прихожая",
-        "prompt": "Photorealistic interior of a small Japandi-style entryway in a studio apartment, about 3 square meters. Wall-mounted walnut wood coat rack with linen tote bag hanging, low walnut wood bench below for sitting, single small bonsai plant in a ceramic pot on the bench, simple framed black ink artwork on the wall. Warm beige plaster walls, natural oak wood floor. Soft indirect natural light. Magazine-quality interior photography, sharp focus. Warm beige and walnut palette."
+        "prompt": ""
       },
       {
         "file": "studio_25_japandi_v3_bathroom.jpg",
         "title": "Санузел",
-        "prompt": "Photorealistic interior of a small bathroom in a Japandi-style studio, about 3 square meters. Walls in warm beige micro-cement, dark walnut wood vanity with single basin under-mount sink, black matte fixtures, large mirror with built-in linear light. Walk-in shower with stone-grey large tiles and black frame. White wall-mounted toilet, single dark wood floating shelf with two folded linen towels. Single small green plant in a clay pot. Indirect warm lighting. Magazine quality. Warm beige + walnut + black palette."
+        "prompt": ""
       },
       {
         "file": "studio_25_japandi_v3_living.jpg",
         "title": "Жилая комната",
-        "prompt": "Photorealistic interior of a 20-square-meter Japandi studio combined living-kitchen-bedroom area. Single-line kitchen on left: low walnut wood cabinets, no upper cabinets, beige stone countertop, black matte tap, single basin sink, narrow open shelf above with ceramic bowls. Low platform futon-style bed against the right wall with linen bedding, separated by a partially open sliding wooden lattice partition in walnut wood (shoji-style). Low coffee table in center with a single bonsai plant. Paper-lantern pendant lamp hanging above. Natural oak hardwood floor, warm beige plaster walls. Soft diffused daylight from a window at the far end. Calm, serene, Japandi palette: warm beige + walnut + black accents. NO bright yellow, NO harsh orange."
+        "prompt": ""
       }
     ],
     "ready": false
@@ -68,32 +78,37 @@
   {
     "id": "studio_28_loft",
     "title": "Студия 29.9 м²",
-    "subtitle": "Soft Loft",
+    "subtitle": "Лофт",
     "article": "131829",
     "area_m2": 29.9,
     "rooms": "Студия",
     "rooms_short": "Студия",
-    "style": "Soft Loft",
+    "style": "Лофт",
+    "palette_tags": [
+      "кирпич",
+      "тёмный металл",
+      "бетон"
+    ],
     "corpus": "Корпус 1.2",
     "price": 20000,
     "budget_furnish": 840000,
-    "description": "Мягкий лофт без бетонной грубости. Кирпичный акцент, тёплая палитра дерева, чёрный металл, латунь.",
+    "description": "Кирпич, тёмное дерево, открытый металл. Для тех, кто чувствует себя дома в кофейне на Патриарших.",
     "plan_image": "https://pb17794.profitbase.ru/uploads/preset/17794/69985f86a4ba8.jpg",
     "images": [
       {
         "file": "studio_28_loft_v3_hallway.jpg",
         "title": "Прихожая",
-        "prompt": "Photorealistic interior of a small Soft Loft style entryway in a studio apartment, about 3 square meters. Exposed red brick accent wall on one side, black metal industrial coat rack with leather jacket hanging, small wooden bench with leather cushion below, large rectangular mirror in a black metal frame on the brick wall, brass wall sconce above. Wide-plank dark oak hardwood floor. Cool grey + brick + warm wood palette. Warm pendant lamp light. Architectural photography, eye-level, sharp focus."
+        "prompt": ""
       },
       {
         "file": "studio_28_loft_v3_bathroom.jpg",
         "title": "Санузел",
-        "prompt": "Photorealistic interior of a Soft Loft style bathroom in a studio, about 4 square meters. Walls in dark grey concrete-look micro-cement, partial exposed red brick on one wall, dark walnut floating vanity with white stone vessel sink, brass tap and brass fixtures, large mirror with industrial black metal frame and warm Edison bulb sconces beside. Walk-in shower with black frame and grey large-format tiles, rain showerhead in brass. White wall-mounted toilet. Dark grey + brick + brass palette. Warm moody lighting. Magazine quality, sharp focus."
+        "prompt": ""
       },
       {
         "file": "studio_28_loft_v3_living.jpg",
         "title": "Жилая комната",
-        "prompt": "Photorealistic interior of a 30-square-meter Soft Loft studio combined living-kitchen-bedroom area. Kitchen on one wall: dark grey matte cabinets with black metal handles, white marble countertop with grey veining, brass tap, single basin sink, extended bar counter with two black metal bar stools with wooden seats. Grey-blue linen sofa with throw blanket in the center facing a wooden coffee table. Tall black metal industrial floor lamp beside the sofa. Open black-metal shelving room divider with books separating the bedroom area, queen bed with dark grey linen behind it visible through the shelves. Wide-plank dark oak hardwood floor. ONE exposed red brick accent wall. Large black-framed window. Cool grey + warm dark wood + red brick + brass palette, NOT beige. Magazine-quality photography, eye-level, sharp focus."
+        "prompt": ""
       }
     ],
     "ready": false
@@ -101,32 +116,37 @@
   {
     "id": "studio_30_classic",
     "title": "Студия 30.4 м²",
-    "subtitle": "Современная классика",
+    "subtitle": "Современный",
     "article": "131830",
     "area_m2": 30.4,
     "rooms": "Студия",
     "rooms_short": "Студия",
-    "style": "Современная классика",
+    "style": "Современный",
+    "palette_tags": [
+      "тёмный синий",
+      "латунь",
+      "стекло"
+    ],
     "corpus": "Корпус 1.1",
     "price": 20000,
     "budget_furnish": 960000,
-    "description": "Сдержанная классика, нейтральная палитра крем + бежевый. Паркет ёлочкой, латунные детали, мягкое кресло у окна.",
+    "description": "Глубокий синий, золотой акцент, стекло. Если ваш день расписан по календарю — это ваш стиль.",
     "plan_image": "https://pb17794.profitbase.ru/uploads/preset/17794/69987966af0a1.jpg",
     "images": [
       {
-        "file": "studio_30_classic_v3_hallway.jpg",
+        "file": "studio_30_modern_v4_hallway.jpg",
         "title": "Прихожая",
-        "prompt": "Photorealistic interior of a small modern classic style entryway in a premium studio apartment, about 3 square meters. Cream walls with subtle classical mouldings, herringbone parquet wood floor in light oak. Built-in cream cabinetry with classical raised panels and brass cup handles serving as wardrobe and shoe storage, large mirror with elegant brass frame. Brass wall sconce providing soft warm light. Single upholstered cream bench with a folded throw. Refined, sophisticated, ivory and cream palette with brass accents. Architectural digest quality. NO yellow tint."
+        "prompt": "Photorealistic interior of a small modern contemporary style entryway in a premium studio apartment, about 3 square meters. Deep navy blue walls with subtle texture, light oak hardwood floor in herringbone pattern. Built-in cabinetry with matte dark navy panels and brass long pull handles serving as wardrobe and shoe storage. Large rectangular mirror with thin brass frame on the wall. Single brass wall sconce providing warm focused light. Glass-and-brass console with a sculptural ceramic bowl. Refined, masculine, deep navy + brass + glass palette. NO beige, NO yellow tint. Architectural photography, sharp focus, eye-level."
       },
       {
-        "file": "studio_30_classic_v3_bathroom.jpg",
+        "file": "studio_30_modern_v4_bathroom.jpg",
         "title": "Санузел",
-        "prompt": "Photorealistic interior of a modern classic style bathroom in a premium studio, about 4 square meters. Walls in white marble large-format tiles with subtle grey veining, herringbone marble floor pattern. Free-standing cream-coloured vanity with white marble counter, under-mount sink, brass tap. Large mirror with simple brass frame, two brass wall sconces beside. Walk-in shower with frameless glass and same marble tile, rain shower head in brass. White wall-mounted toilet, small brass shelf with rolled white towels. Soft warm refined lighting. Cream + marble + brass palette. Magazine quality photography, sharp focus."
+        "prompt": "Photorealistic interior of a modern contemporary style bathroom in a premium studio, about 4 square meters. Walls in dark navy blue large-format porcelain tiles with subtle veining, herringbone marble floor in light tones for contrast. Floating vanity in matte dark navy with white marble counter, under-mount sink, brass tap, brass fixtures. Large rectangular mirror with thin brass frame, integrated LED light strip. Walk-in shower with frameless glass and same dark navy tile, rain shower head in brass. White wall-mounted toilet. Brass shelf with rolled white towels. Soft warm refined lighting. Navy + marble + brass + glass palette. NO beige, magazine quality, sharp focus."
       },
       {
-        "file": "studio_30_classic_v3_living.jpg",
+        "file": "studio_30_modern_v4_living.jpg",
         "title": "Жилая комната",
-        "prompt": "Photorealistic interior of a 30-square-meter modern classic studio combined living-kitchen-bedroom area. Cream cabinetry kitchen with raised classical panels and brass cup handles along one wall, white marble countertop with subtle veining, brass tap, integrated appliances behind matching panels, marble-top round dining table with two upholstered cream chairs and a brass pendant lamp above. Queen bed against opposite wall with cream linen bedding and silk throw, two upholstered cream nightstands with brass table lamps. Single upholstered cream armchair near a large window with sheer linen curtains. Herringbone parquet wood floor in light oak. Cream walls with subtle classical mouldings, brass picture rail. Soft natural daylight. Refined cream + ivory + brass palette. Magazine-quality photography, eye-level, sharp focus. NO yellow tone overall."
+        "prompt": "Photorealistic interior of a 30-square-meter modern contemporary studio combined living-kitchen-bedroom area. Kitchen along one wall: matte dark navy lower cabinets with brass long handles, white marble countertop with subtle grey veining, brass tap, integrated appliances behind matching navy panels, glass and brass open shelf above with a few ceramic objects. Round marble-top dining table with two upholstered dark teal chairs and a sculptural brass pendant lamp above. Queen bed against opposite wall with deep navy bedding and ivory throw, two upholstered cream nightstands with brass table lamps. Single sculptural glass coffee table in a small seating area near a large window with sheer linen curtains. Light oak herringbone parquet floor. One accent wall in deep navy blue, other walls in soft warm white. Soft natural daylight. Sharp focus, magazine quality, eye-level. Deep navy + brass + glass + ivory palette. NO yellow tone overall, NO heavy beige."
       }
     ],
     "ready": false

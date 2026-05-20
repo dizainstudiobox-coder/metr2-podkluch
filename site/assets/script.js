@@ -21,6 +21,7 @@
           </div>
           <h3>${p.title}</h3>
           <p class="subtitle">${p.subtitle}</p>
+          ${p.palette_tags ? '<div class="palette-tags">' + p.palette_tags.map(t => '<span class="palette-tag">' + t + '</span>').join('') + '</div>' : ''}
           <div class="price-row">
             <div>
               <div class="price-label">Цена проекта</div>

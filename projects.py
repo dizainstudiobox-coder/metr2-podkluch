@@ -3,10 +3,10 @@
 PROJECTS = [
     {
         "id": "studio_20_scandi",
-        "title": "Студия 20 м² — Скандинавский минимализм",
+        "title": "Студия 18.5 м² — Скандинавский",
         "area_m2": 20,
         "rooms": "Студия",
-        "style": "Скандинавский минимализм",
+        "style": "Скандинавский",
         "corpus": "Корпус 1.3",
         "price": 20000,
         "description": (
@@ -18,10 +18,10 @@ PROJECTS = [
     },
     {
         "id": "studio_25_japandi",
-        "title": "Студия 25 м² — Japandi",
+        "title": "Студия 20 м² — Японди",
         "area_m2": 25,
         "rooms": "Студия",
-        "style": "Japandi",
+        "style": "Японди",
         "corpus": "Корпус 1.2",
         "price": 20000,
         "description": (
@@ -33,10 +33,10 @@ PROJECTS = [
     },
     {
         "id": "studio_28_loft",
-        "title": "Студия 28 м² — Soft Loft",
+        "title": "Студия 29.9 м² — Лофт",
         "area_m2": 28,
         "rooms": "Студия",
-        "style": "Soft Loft",
+        "style": "Лофт",
         "corpus": "Корпус 1.2",
         "price": 20000,
         "description": (
@@ -48,10 +48,10 @@ PROJECTS = [
     },
     {
         "id": "studio_30_classic",
-        "title": "Студия 30 м² — Современная классика",
+        "title": "Студия 30.4 м² — Современный",
         "area_m2": 30,
         "rooms": "Студия",
-        "style": "Современная классика",
+        "style": "Современный",
         "corpus": "Корпус 1.1",
         "price": 20000,
         "description": (
